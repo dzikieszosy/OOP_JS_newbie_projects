@@ -5,13 +5,35 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Jednoręki bandyta - projekt OOP JS</title>
+   <link rel="stylesheet" href="style.css">
+
 
 </head>
 
 <body>
+   <div class="wrap">
+      <h1>Jednoręki bandyta</h1>
 
-   <script src="main.js"></script>
+      <section class="game">
+         <div class="color"></div>
+         <div class="color"></div>
+         <div class="color"></div>
+      </section>
+
+      <section class="play">
+         <input type="number" placeholder="Podaj stawkę" id="bid">
+         <button id="start">Zakręć!</button>
+      </section>
+
+      <section class="panel">TWOJE ŚRODKI PRZED KOLEJNĄ GRĄ TO: <span class="wallet"></span></section>
+
+      <section class="score">
+         <span class="result"></span> Za Tobą <span class="number"></span> gier, w tym <span class="win"></span>
+         wygranych i <span class="loss"></span> przegranych
+      </section>
+   </div>
+   <script src="game.js"></script>
 </body>
 
 </html>
