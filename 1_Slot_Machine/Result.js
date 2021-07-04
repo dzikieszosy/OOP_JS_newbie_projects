@@ -3,11 +3,10 @@ class Result {
       if (result) return 3 * bid;
       else return 0;
    }
-   static checkWinner(draw) {
+   static checkWinner(draw) { //zasady gry
       if (draw[0] === draw[1] && draw[1] === draw[2] || draw[0] !== draw[1] && draw[1] !== draw[2] && draw[0] !== draw[2]) return true;
       else return false;
-
    }
 }
 
-Result.moneyWinInGame(true, 5);
+// Result.moneyWinInGame(true, 5);
