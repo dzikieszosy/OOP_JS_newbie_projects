@@ -1,11 +1,12 @@
-import { Quote } from "./Quote.js";
+import {
+  Quote
+} from "./Quote.js";
 
 class Game {
   currentStep = 0;
   lastStep = 7;
 
-  quotes = [
-    {
+  quotes = [{
       text: "pan tadeusz",
       category: "Utwór literacki",
     },
@@ -23,15 +24,22 @@ class Game {
     },
   ];
 
-  constructor({ lettersWrapper, categoryWrapper, wordWrapper, outputWrapper }) {
+  constructor({
+    lettersWrapper,
+    categoryWrapper,
+    wordWrapper,
+    outputWrapper
+  }) {
     this.lettersWrapper = lettersWrapper;
     this.categoryWrapper = categoryWrapper;
     this.wordWrapper = wordWrapper;
     this.outputWrapper = outputWrapper;
 
-    const { text, category } = this.quotes[
-      Math.floor(Math.random() * this.quotes.length)
-    ];
+    const {
+      text,
+      category
+    } = this.quotes[
+      Math.floor(Math.random() * this.quotes.length)];
     this.categoryWrapper.innerHTML = category;
     this.quote = new Quote(text);
   }
@@ -47,48 +55,51 @@ class Game {
         this.loosing();
       }
     }
+
+    // console.log(letter);
   }
 
   drawLetters() {
+    // console.log("Let's play the game");
     for (let i = 0; i < 26; i++) {
       const label = (i + 10).toString(36);
-      const button = document.createElement("button");
+      const button = document.createElement('button');
       button.innerHTML = label;
-      button.addEventListener("click", (event) => this.guess(label, event));
+      button.addEventListener('click', (event) => this.guess(label, event));
       this.lettersWrapper.appendChild(button);
+      // console.log(label);
     }
   }
 
   drawQuote() {
     const content = this.quote.getContent();
+    // console.log(content);
     this.wordWrapper.innerHTML = content;
     if (!content.includes('_')) {
-        this.winning();
+      this.winning();
     }
   }
-
   start() {
-    document.getElementsByClassName("step")[this.currentStep].style.opacity = 1;
+    document.getElementsByClassName('step')[this.currentStep].style.opacity = 1;
     this.drawLetters();
     this.drawQuote();
   }
-
   winning() {
-    this.wordWrapper.innerHTML = "GRATULACJE! WYGRYWASZ! KONIEC GRY";
-    this.lettersWrapper.innerHTML = "";
+    this.wordWrapper.innerHTML = 'Gratulacje! Wygrywasz, koniec gry';
+    this.lettersWrapper.innerHTML = '';
   }
-
   loosing() {
-    this.wordWrapper.innerHTML = "NIESTETY! PRZEGRYWASZ! TO KONIEC GRY";
-    this.lettersWrapper.innerHTML = "";
+    this.wordWrapper.innerHTML = 'Niestety, przegrywasz, koniec gry';
+    this.lettersWrapper.innerHTML = '';
   }
 }
 
+
 const game = new Game({
-  lettersWrapper: document.getElementById("letters"),
-  categoryWrapper: document.getElementById("category"),
-  wordWrapper: document.getElementById("word"),
-  outputWrapper: document.getElementById("output"),
+  lettersWrapper: document.getElementById('letters'),
+  categoryWrapper: document.getElementById('category'),
+  wordWrapper: document.getElementById('word'),
+  outputWrapper: document.getElementById('output'),
 });
 
 game.start();
