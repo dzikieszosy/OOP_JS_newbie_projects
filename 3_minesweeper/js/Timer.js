@@ -9,31 +9,31 @@ export class Timer extends UI {
   maxNumberOfSeconds = 999;
 
   init() {
-    this.#element = this.getElement(this.UiSelectors.timer);
+    this.element = this.getElement(this.UiSelectors.timer);
   }
 
   tartTimer() {
-    this.#interval = setInterval(() => this.#updateTimer(), 1000);
+    this.interval = setInterval(() => this.updateTimer(), 1000);
   }
   stopTimer() {
-    clearInterval(this.#interval);
+    clearInterval(this.interval);
   }
 
   resetTimer() {
     this.numberOfSeconds = 0;
-    this.#setTimerValue(this.numberOfSeconds);
+    this.setTimerValue(this.numberOfSeconds);
     this.stopTimer();
-    this.#startTimer();
+    this.startTimer();
   }
 
   updateTimer() {
     this.numberOfSeconds++;
     this.numberOfSeconds <= this.maxNumberOfSeconds ?
-      this.#setTimerValue(this.numberOfSeconds) :
+      this.setTimerValue(this.numberOfSeconds) :
       this.stopTimer();
   }
 
   setTimerValue(value) {
-    this.#element.textContent = value;
+    this.element.textContent = value;
   }
 }
